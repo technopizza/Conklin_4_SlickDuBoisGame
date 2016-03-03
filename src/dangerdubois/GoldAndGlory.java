@@ -64,6 +64,8 @@ public class GoldAndGlory extends BasicGameState {
     public Enemy indianBow8;
     public Enemy indianBow9;
 
+    public Player duBois;
+    
     Treasure smallprize;
     Treasure grandprize;
     Treasure grandeprize;
@@ -97,11 +99,14 @@ public class GoldAndGlory extends BasicGameState {
 
     public static int counter = 0;
 
-    // Player stuff
+    // duBois stuff
     private Animation sprite;
     boolean attacking = false;
     int attackCounter = 0;
     String direction = "down";
+    
+    
+    
     /**
      *
      * The collision map indicating which tiles block movement - generated based
@@ -124,20 +129,24 @@ public class GoldAndGlory extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg)
             throws SlickException {
 
+        duBois = new Player(128, 128, 8, 100);
+        
         gc.setTargetFrameRate(60);
 
         gc.setShowFPS(false);
 
         grassMap = new TiledMap("res/d4.tmx");
+        
+        duBois.spriteInit("res/indianSpear.png");
 
         camera = new Camera(gc, grassMap);
 
-        Player.spriteInit();
         Mine.configureAnimations();
 
-        sprite = Player.walkSouth;
+        sprite = duBois.getMoveSouth();
 
         Orb.getAllImages();
+        
 
         // *****************************************************************
         // Obstacles etc.
@@ -221,21 +230,19 @@ public class GoldAndGlory extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
             throws SlickException {
 
-        camera.centerOn((int) Player.x, (int) Player.y);
+        camera.centerOn((int) duBois.getPositionX(), (int) duBois.getPositionY());
 
         camera.drawMap();
 
         camera.translateGraphics();
 
-        sprite.draw((int) Player.x, (int) Player.y);
+        sprite.draw((int) duBois.getPositionX(), (int) duBois.getPositionY());
 
-        //g.draw(Player.rect);
+        //g.draw(duBois.rect);
         
-        g.drawString("Health: " + Player.health / 1000, camera.cameraX + 10,
+        g.drawString("Health: " + duBois.getHealth() / 1000, camera.cameraX + 10,
                 camera.cameraY + 10);
 
-        g.drawString("treasure: " + (int) (Player.gold), camera.cameraX + 10,
-                camera.cameraY + 40);
 
         drawenemies();
 
@@ -319,7 +326,7 @@ public class GoldAndGlory extends BasicGameState {
 
         float fdelta = delta * 0.4f;
 
-        Player.setpdelta(fdelta);
+        duBois.setPdelta(fdelta);
 
         
         for (Mine m: mines){
@@ -364,13 +371,13 @@ public class GoldAndGlory extends BasicGameState {
             attacking = true;
             attackCounter = 8;
             if (direction == "up") {
-                sprite = Player.thrustUp;
+                sprite = duBois.getThrustNorth();
             } else if (direction == "down") {
-                sprite = Player.thrustDown;
+                sprite = duBois.getThrustSouth();
             } else if (direction == "left") {
-                sprite = Player.thrustLeft;
+                sprite = duBois.getThrustWest();
             } else if (direction == "right") {
-                sprite = Player.thrustRight;
+                sprite = duBois.getThrustEast();
             }
         }
         if (!(currentsteps > 0) && !attacking) {
@@ -378,26 +385,26 @@ public class GoldAndGlory extends BasicGameState {
             if (input.isKeyDown(Input.KEY_UP)) {
 
                 if (direction != "up") {
-                    sprite = Player.faceUp;
+                    sprite = duBois.getStandNorth();
                     direction = "up";
                     currentsteps = 0;
                 } else {
-                    if (currentsteps == 0 && (!isBlocked(Player.x, Player.y - tileSize))) {
-                        currentsteps = tileSize / Player.speed;
-                        sprite = Player.walkUp;
+                    if (currentsteps == 0 && (!isBlocked(duBois.getPositionX(), duBois.getPositionY() - tileSize))) {
+                        currentsteps = tileSize / duBois.getSpeed();
+                        sprite = duBois.getMoveNorth();
                     }
 
                 }
             } else if (input.isKeyDown(Input.KEY_DOWN)) {
 
                 if (direction != "down") {
-                    sprite = Player.faceDown;
+                    sprite = duBois.getStandSouth();
                     direction = "down";
                     currentsteps = 0;
                 } else {
-                    if (currentsteps == 0 && (!isBlocked(Player.x, Player.y + tileSize))) {
-                        currentsteps = tileSize / Player.speed;
-                        sprite = Player.walkDown;
+                    if (currentsteps == 0 && (!isBlocked(duBois.getPositionX(), duBois.getPositionY() + tileSize))) {
+                        currentsteps = tileSize / duBois.getSpeed();
+                        sprite = duBois.getMoveSouth();
                     }
 
                 }
@@ -405,13 +412,13 @@ public class GoldAndGlory extends BasicGameState {
             } else if (input.isKeyDown(Input.KEY_LEFT)) {
 
                 if (direction != "left") {
-                    sprite = Player.faceLeft;
+                    sprite = duBois.getStandWest();
                     direction = "left";
                     currentsteps = 0;
                 } else {
-                    if (currentsteps == 0 && (!isBlocked(Player.x - tileSize, Player.y))) {
-                        currentsteps = tileSize / Player.speed;
-                        sprite = Player.walkLeft;
+                    if (currentsteps == 0 && (!isBlocked(duBois.getPositionX() - tileSize, duBois.getPositionY()))) {
+                        currentsteps = tileSize / duBois.getSpeed();
+                        sprite = duBois.getMoveWest();
                     }
 
                 }
@@ -419,18 +426,18 @@ public class GoldAndGlory extends BasicGameState {
             } else if (input.isKeyDown(Input.KEY_RIGHT)) {
 
                 if (direction != "right") {
-                    sprite = Player.faceRight;
+                    sprite = duBois.getStandEast();
                     direction = "right";
                     currentsteps = 0;
                 } else {
-                    if (currentsteps == 0 && (!isBlocked(Player.x + tileSize, Player.y))) {
-                        currentsteps = tileSize / Player.speed;
-                        sprite = Player.walkRight;
+                    if (currentsteps == 0 && (!isBlocked(duBois.getPositionX() + tileSize, duBois.getPositionY()))) {
+                        currentsteps = tileSize / duBois.getSpeed();
+                        sprite = duBois.getMoveEast();
                     }
 
                 }
             } else if (input.isKeyPressed(Input.KEY_SPACE)) {
-                orbs.add(new Orb(Player.x, Player.y, direction));
+                orbs.add(new Orb(duBois.getPositionX(), duBois.getPositionY(), direction));
             }
             if (currentsteps > 0) {
                 for (Enemy e : enemies) {
@@ -454,29 +461,29 @@ public class GoldAndGlory extends BasicGameState {
                 currentsteps -= 1;
                 if (direction == "up") {
 
-                    Player.y -= Player.speed;
+                    duBois.setPositionY(duBois.getPositionY() - duBois.getSpeed());
 
                 } else if (direction == "down") {
-                    Player.y += Player.speed;
+                    duBois.setPositionY(duBois.getPositionY() + duBois.getSpeed());
                 } else if (direction == "left") {
-                    Player.x -= Player.speed;
+                    duBois.setPositionY(duBois.getPositionX() - duBois.getSpeed());
                 } else if (direction == "right") {
-                    Player.x += Player.speed;
+                    duBois.setPositionY(duBois.getPositionX() + duBois.getSpeed());
                 }
 
             }
             moveenemies();
 
         }
-        Player.rect.setLocation(Player.getplayershitboxX(), Player.getplayershitboxY());
+        duBois.getHitBox().setLocation(duBois.getHitBoxPositionX(), duBois.getHitBoxPositionY());
 
         for (Treasure i : treasures) {
 
-            if (Player.rect.intersects(i.hitbox)) {
+            if (duBois.getHitBox().intersects(i.hitbox)) {
 
                 if (i.isvisible) {
 
-                    Player.gold += 100;
+                    duBois.setHealth(duBois.getHealth() + 100);
                     i.isvisible = false;
                 }
 
@@ -486,14 +493,14 @@ public class GoldAndGlory extends BasicGameState {
         
         for (Mine m : mines) {
 
-            if (Player.rect.intersects(m.getHitBox())) {
+            if (duBois.getHitBox().intersects(m.getHitBox())) {
                 
                 if (m.isVisible()) {
 
                     
                     m.setVisible(false);
                     m.setExplosionCount(38);
-                    Player.health -= Mine.damage;
+                    duBois.setHealth(duBois.getHealth() - Mine.damage); 
                 }
 
             }
@@ -509,8 +516,8 @@ public class GoldAndGlory extends BasicGameState {
 //                        arrows.remove(a);
 //                    }
 
-                } else if (Player.rect.intersects(a.hitbox)) {
-                    Player.health -= 10000;
+                } else if (duBois.getHitBox().intersects(a.hitbox)) {
+                    duBois.setHealth(duBois.getHealth() - 10000);
                     a.isvisible = false;
 //                     if (arrows.size() > 1) {
 //                        arrows.remove(a);
@@ -548,9 +555,9 @@ public class GoldAndGlory extends BasicGameState {
 
         for (Enemy e : enemies) {
 
-            if (Player.rect.intersects(e.rect)) {
+            if (duBois.getHitBox().intersects(e.rect)) {
 
-                Player.health -= 100;
+                duBois.setHealth(duBois.getHealth() - 100);
 
             }
 
@@ -629,18 +636,18 @@ public class GoldAndGlory extends BasicGameState {
             }
 
         }
-        Player.health -= counter / 1000;
-        if (Player.health
+        //duBois.health -= counter / 1000;
+        if (duBois.getHealth()
                 <= 0) {
             makevisible();
             sbg.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
         }
-        if (Player.gold
-                >= 400) {
-            makevisible();
-            Player.gold = 0;
-            sbg.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-        }
+//        if (duBois.gold
+//                >= 400) {
+//            makevisible();
+//            duBois.gold = 0;
+//            sbg.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+//        }
 
     }
 

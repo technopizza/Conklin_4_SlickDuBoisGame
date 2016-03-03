@@ -20,16 +20,27 @@ public class Player {
     
     private int positionX, positionY, hitBoxPositionX, hitBoxPositionY, speed, health;
     private Animation moveNorth, moveSouth, moveEast, moveWest, standNorth, standSouth, standEast, standWest, thrustNorth, thrustSouth, thrustEast, thrustWest;
-    private Shape hitBox = new Rectangle(getHitBoxPositionX(), getHitBoxPositionY(), 64, 64);
+    private Shape hitBox;
     private SpriteSheet playerSpriteSheet;
     private float pdelta;
 
-       
+       Player(int posX, int posY, int spd, int hth) {
+           
+           positionX = posX;
+           positionY = posY;
+           hitBoxPositionX = positionX;
+           hitBoxPositionY = positionY;
+           hitBox = new Rectangle(hitBoxPositionX, hitBoxPositionY, 64, 64);
+           //spriteInit(path);
+           speed = spd;
+           health = hth;
+           
+       }
         
         
         
-        void spriteInit() throws SlickException{
-        playerSpriteSheet = new SpriteSheet("res/explorerSpear.png", 64, 64, 0);
+         void spriteInit(String path) throws SlickException{
+        playerSpriteSheet = new SpriteSheet(path, 64, 64, 0);
         
         standNorth = new Animation();
         standNorth.addFrame(playerSpriteSheet.getSprite(0, 8), 110);
