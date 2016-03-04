@@ -19,7 +19,7 @@ import org.newdawn.slick.geom.Shape;
 public class Player {
     
     private int positionX, positionY, hitBoxPositionX, hitBoxPositionY, speed, health;
-    private Animation moveNorth, moveSouth, moveEast, moveWest, standNorth, standSouth, standEast, standWest, thrustNorth, thrustSouth, thrustEast, thrustWest;
+    private Animation moveNorth, moveSouth, moveWest, moveEast, standNorth, standSouth, standWest, standEast, thrustNorth, thrustSouth, thrustWest, thrustEast;
     private Shape hitBox;
     private SpriteSheet playerSpriteSheet;
     private float pdelta;
@@ -89,91 +89,91 @@ public class Player {
 
         moveSouth.addFrame(playerSpriteSheet.getSprite(8, 10), 200);
 
-        standEast = new Animation();
-        standEast.addFrame(playerSpriteSheet.getSprite(0, 9), 330);
-
-        moveEast = new Animation();
-
-        moveEast.setAutoUpdate(false);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(0, 9), 200);
-        moveEast.addFrame(playerSpriteSheet.getSprite(1, 9), 200);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(2, 9), 200);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(3, 9), 200);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(4, 9), 200);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(5, 9), 200);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(6, 9), 200);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(7, 9), 200);
-
-        moveEast.addFrame(playerSpriteSheet.getSprite(8, 9), 200);
-
         standWest = new Animation();
-        standWest.addFrame(playerSpriteSheet.getSprite(0, 11), 200);
+        standWest.addFrame(playerSpriteSheet.getSprite(0, 9), 330);
 
         moveWest = new Animation();
 
         moveWest.setAutoUpdate(false);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(0, 11), 200);
-        moveWest.addFrame(playerSpriteSheet.getSprite(1, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(0, 9), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(1, 9), 200);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(2, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(2, 9), 200);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(3, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(3, 9), 200);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(4, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(4, 9), 200);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(5, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(5, 9), 200);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(6, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(6, 9), 200);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(7, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(7, 9), 200);
 
-        moveWest.addFrame(playerSpriteSheet.getSprite(8, 11), 200);
+        moveWest.addFrame(playerSpriteSheet.getSprite(8, 9), 200);
 
-        thrustWest = new Animation();
+        standEast = new Animation();
+        standEast.addFrame(playerSpriteSheet.getSprite(0, 11), 200);
 
-        thrustWest.setAutoUpdate(false);
+        moveEast = new Animation();
 
-        thrustWest.addFrame(playerSpriteSheet.getSprite(0, 7), 150);
-        thrustWest.addFrame(playerSpriteSheet.getSprite(1, 7), 150);
+        moveEast.setAutoUpdate(false);
 
-        thrustWest.addFrame(playerSpriteSheet.getSprite(2, 7), 150);
+        moveEast.addFrame(playerSpriteSheet.getSprite(0, 11), 200);
+        moveEast.addFrame(playerSpriteSheet.getSprite(1, 11), 200);
 
-        thrustWest.addFrame(playerSpriteSheet.getSprite(3, 7), 150);
+        moveEast.addFrame(playerSpriteSheet.getSprite(2, 11), 200);
 
-        thrustWest.addFrame(playerSpriteSheet.getSprite(4, 7), 150);
+        moveEast.addFrame(playerSpriteSheet.getSprite(3, 11), 200);
 
-        thrustWest.addFrame(playerSpriteSheet.getSprite(5, 7), 150);
+        moveEast.addFrame(playerSpriteSheet.getSprite(4, 11), 200);
 
-        thrustWest.addFrame(playerSpriteSheet.getSprite(6, 7), 150);
+        moveEast.addFrame(playerSpriteSheet.getSprite(5, 11), 200);
 
-        thrustWest.addFrame(playerSpriteSheet.getSprite(7, 7), 150);
+        moveEast.addFrame(playerSpriteSheet.getSprite(6, 11), 200);
+
+        moveEast.addFrame(playerSpriteSheet.getSprite(7, 11), 200);
+
+        moveEast.addFrame(playerSpriteSheet.getSprite(8, 11), 200);
 
         thrustEast = new Animation();
 
         thrustEast.setAutoUpdate(false);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(0, 5), 150);
-        thrustEast.addFrame(playerSpriteSheet.getSprite(1, 5), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(0, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(1, 7), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(2, 5), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(2, 7), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(3, 5), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(3, 7), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(4, 5), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(4, 7), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(5, 5), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(5, 7), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(6, 5), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(6, 7), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(7, 5), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(7, 7), 150);
+
+        thrustWest = new Animation();
+
+        thrustWest.setAutoUpdate(false);
+
+        thrustWest.addFrame(playerSpriteSheet.getSprite(0, 5), 150);
+        thrustWest.addFrame(playerSpriteSheet.getSprite(1, 5), 150);
+
+        thrustWest.addFrame(playerSpriteSheet.getSprite(2, 5), 150);
+
+        thrustWest.addFrame(playerSpriteSheet.getSprite(3, 5), 150);
+
+        thrustWest.addFrame(playerSpriteSheet.getSprite(4, 5), 150);
+
+        thrustWest.addFrame(playerSpriteSheet.getSprite(5, 5), 150);
+
+        thrustWest.addFrame(playerSpriteSheet.getSprite(6, 5), 150);
+
+        thrustWest.addFrame(playerSpriteSheet.getSprite(7, 5), 150);
 
         thrustNorth = new Animation();
 
@@ -281,20 +281,20 @@ public class Player {
         this.moveSouth = moveSouth;
     }
 
-    public Animation getMoveEast() {
-        return moveEast;
-    }
-
-    public void setMoveEast(Animation moveEast) {
-        this.moveEast = moveEast;
-    }
-
     public Animation getMoveWest() {
         return moveWest;
     }
 
     public void setMoveWest(Animation moveWest) {
         this.moveWest = moveWest;
+    }
+
+    public Animation getMoveEast() {
+        return moveEast;
+    }
+
+    public void setMoveEast(Animation moveEast) {
+        this.moveEast = moveEast;
     }
 
     public Animation getStandNorth() {
@@ -313,20 +313,20 @@ public class Player {
         this.standSouth = standSouth;
     }
 
-    public Animation getStandEast() {
-        return standEast;
-    }
-
-    public void setStandEast(Animation standEast) {
-        this.standEast = standEast;
-    }
-
     public Animation getStandWest() {
         return standWest;
     }
 
     public void setStandWest(Animation standWest) {
         this.standWest = standWest;
+    }
+
+    public Animation getStandEast() {
+        return standEast;
+    }
+
+    public void setStandEast(Animation standEast) {
+        this.standEast = standEast;
     }
 
     public Animation getThrustNorth() {
@@ -345,20 +345,20 @@ public class Player {
         this.thrustSouth = thrustSouth;
     }
 
-    public Animation getThrustEast() {
-        return thrustEast;
-    }
-
-    public void setThrustEast(Animation thrustEast) {
-        this.thrustEast = thrustEast;
-    }
-
     public Animation getThrustWest() {
         return thrustWest;
     }
 
     public void setThrustWest(Animation thrustWest) {
         this.thrustWest = thrustWest;
+    }
+
+    public Animation getThrustEast() {
+        return thrustEast;
+    }
+
+    public void setThrustEast(Animation thrustEast) {
+        this.thrustEast = thrustEast;
     }
 
     public Shape getHitBox() {

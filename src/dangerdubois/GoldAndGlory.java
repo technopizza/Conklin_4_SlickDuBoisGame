@@ -65,11 +65,11 @@ public class GoldAndGlory extends BasicGameState {
     public Enemy indianBow9;
 
     public Player duBois;
-    
+
     Treasure smallprize;
     Treasure grandprize;
     Treasure grandeprize;
-    
+
     Mine trap, trap1, trap2;
 
     public ArrayList<Treasure> treasures = new ArrayList();
@@ -80,7 +80,7 @@ public class GoldAndGlory extends BasicGameState {
     public ArrayList<Arrow> arrows = new ArrayList();
 
     public ArrayList<Orb> orbs = new ArrayList();
-    
+
     public ArrayList<Mine> mines = new ArrayList();
 
     public ArrayList<Item> stuff = new ArrayList();
@@ -104,9 +104,7 @@ public class GoldAndGlory extends BasicGameState {
     boolean attacking = false;
     int attackCounter = 0;
     String direction = "down";
-    
-    
-    
+
     /**
      *
      * The collision map indicating which tiles block movement - generated based
@@ -130,14 +128,14 @@ public class GoldAndGlory extends BasicGameState {
             throws SlickException {
 
         duBois = new Player(128, 128, 8, 100);
-        
+
         gc.setTargetFrameRate(60);
 
         gc.setShowFPS(false);
 
         grassMap = new TiledMap("res/d4.tmx");
-        
-        duBois.spriteInit("res/indianSpear.png");
+
+        duBois.spriteInit("res/explorer.png");
 
         camera = new Camera(gc, grassMap);
 
@@ -146,7 +144,6 @@ public class GoldAndGlory extends BasicGameState {
         sprite = duBois.getMoveSouth();
 
         Orb.getAllImages();
-        
 
         // *****************************************************************
         // Obstacles etc.
@@ -177,7 +174,6 @@ public class GoldAndGlory extends BasicGameState {
 
         }
 
-
         smallprize = new Treasure(tileSize * 20, tileSize * 15);
         grandprize = new Treasure(tileSize * 7, tileSize * 15);
         grandeprize = new Treasure(tileSize * 17, tileSize * 8);
@@ -202,9 +198,6 @@ public class GoldAndGlory extends BasicGameState {
         indianBow8 = new Enemy(tileSize * 20, tileSize * 20, "left", false);
         indianBow9 = new Enemy(tileSize * 20, tileSize * 19, "up", false);
 
-        
-        
-        
         enemies.add(indianBow1);
         indianBow1.configBow();
 
@@ -239,19 +232,17 @@ public class GoldAndGlory extends BasicGameState {
         sprite.draw((int) duBois.getPositionX(), (int) duBois.getPositionY());
 
         //g.draw(duBois.rect);
-        
         g.drawString("Health: " + duBois.getHealth() / 1000, camera.cameraX + 10,
                 camera.cameraY + 10);
 
-
         drawenemies();
 
-        for (Mine m: mines){
+        for (Mine m : mines) {
             if (m.getExplosionCount() > 0) {
                 m.getMineExplosionAnimation().draw(m.getPositionX(), m.getPositionY());
             }
         }
-        
+
         for (Mine m : mines) {
             if (m.isVisible()) {
                 m.getCurrentImage().draw(m.getPositionX(), m.getPositionY());
@@ -260,7 +251,7 @@ public class GoldAndGlory extends BasicGameState {
 
             }
         }
-        
+
         for (Orb o : orbs) {
             if (o.isVisible()) {
                 o.orbImage.draw(o.getPositionX(), o.getPositionY());
@@ -316,9 +307,7 @@ public class GoldAndGlory extends BasicGameState {
         }
 
     }
-    
-    
-    
+
     public void update(GameContainer gc, StateBasedGame sbg, int delta)
             throws SlickException {
 
@@ -328,15 +317,14 @@ public class GoldAndGlory extends BasicGameState {
 
         duBois.setPdelta(fdelta);
 
-        
-        for (Mine m: mines){
-            
-            if(m.getExplosionCount() > 0){
+        for (Mine m : mines) {
+
+            if (m.getExplosionCount() > 0) {
                 m.getMineExplosionAnimation().update(delta);
                 m.setExplosionCount(m.getExplosionCount() - 1);
             }
         }
-        
+
         for (Arrow a : arrows) {
             if (a.direction == "up") {
                 a.y -= Arrow.speed;
@@ -352,13 +340,13 @@ public class GoldAndGlory extends BasicGameState {
             o.setRotation(o.getRotation() + Orb.speedRotation);
             if (o.direction == "up") {
                 o.setPositionY(o.getPositionY() - Orb.speed);
-                            } else if (o.direction == "down") {
+            } else if (o.direction == "down") {
                 o.setPositionY(o.getPositionY() + Orb.speed);
-                            } else if (o.direction == "right") {
+            } else if (o.direction == "right") {
                 o.setPositionX(o.getPositionX() + Orb.speed);
-                   } else if (o.direction == "left") {
+            } else if (o.direction == "left") {
                 o.setPositionX(o.getPositionX() - Orb.speed);
-         
+
             }
             o.orbImage.setRotation(o.getRotation());
             o.setTimemoved(o.getTimemoved() + Orb.speed);
@@ -441,15 +429,14 @@ public class GoldAndGlory extends BasicGameState {
             }
             if (currentsteps > 0) {
                 for (Enemy e : enemies) {
-                     if(e.isIsAlive()){
-                    Arrow thisArrow = new Arrow(e.getskX(), e.getskY(), e.direction);
-                    thisArrow.getImage();
-                    arrows.add(thisArrow);
+                    if (e.isIsAlive()) {
+                        Arrow thisArrow = new Arrow(e.getskX(), e.getskY(), e.direction);
+                        thisArrow.getImage();
+                        arrows.add(thisArrow);
                     }
                 }
             }
 
-            
         } else {
             sprite.update(delta);
             if (attackCounter > 0) {
@@ -466,9 +453,9 @@ public class GoldAndGlory extends BasicGameState {
                 } else if (direction == "down") {
                     duBois.setPositionY(duBois.getPositionY() + duBois.getSpeed());
                 } else if (direction == "left") {
-                    duBois.setPositionY(duBois.getPositionX() - duBois.getSpeed());
+                    duBois.setPositionX(duBois.getPositionX() - duBois.getSpeed());
                 } else if (direction == "right") {
-                    duBois.setPositionY(duBois.getPositionX() + duBois.getSpeed());
+                    duBois.setPositionX(duBois.getPositionX() + duBois.getSpeed());
                 }
 
             }
@@ -489,18 +476,16 @@ public class GoldAndGlory extends BasicGameState {
 
             }
         }
-        
-        
+
         for (Mine m : mines) {
 
             if (duBois.getHitBox().intersects(m.getHitBox())) {
-                
+
                 if (m.isVisible()) {
 
-                    
                     m.setVisible(false);
                     m.setExplosionCount(38);
-                    duBois.setHealth(duBois.getHealth() - Mine.damage); 
+                    duBois.setHealth(duBois.getHealth() - Mine.damage);
                 }
 
             }
@@ -698,12 +683,12 @@ public class GoldAndGlory extends BasicGameState {
             for (Enemy e : enemies) {
                 //if(e.isAlive != false){
                 //System.out.println("The current selection is: " +e.currentanime);
-                
-                if(e.isIsAlive()){
-                e.currentanime.draw(e.Bx, e.By);}
+
+                if (e.isIsAlive()) {
+                    e.currentanime.draw(e.Bx, e.By);
+                }
             }
 
-             
         } catch (IndexOutOfBoundsException e) {
 
             System.err.println("IndexOutOfBoundsException: "
