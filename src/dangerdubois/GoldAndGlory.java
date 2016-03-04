@@ -127,7 +127,7 @@ public class GoldAndGlory extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg)
             throws SlickException {
 
-        duBois = new Player(128, 128, 8, 100);
+        duBois = new Player(128, 128, 2, 100);
 
         gc.setTargetFrameRate(60);
 
@@ -443,9 +443,10 @@ public class GoldAndGlory extends BasicGameState {
                 attackCounter--;
             }
 
-            if (!attacking) {
+            if (!attacking && currentsteps > 0) {
 
                 currentsteps -= 1;
+                
                 if (direction == "up") {
 
                     duBois.setPositionY(duBois.getPositionY() - duBois.getSpeed());
