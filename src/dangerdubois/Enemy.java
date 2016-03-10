@@ -43,7 +43,7 @@ public class Enemy {
     private boolean icangoleft;
     private boolean icangoright;
   private boolean isAlive;
-    private int startX, startY, width = 62, height = 62;
+    private int startX, startY, width = 32, height = 32;
     float hitboxX = this.Bx;
 
     float hitboxY = this.By;
@@ -89,7 +89,7 @@ public class Enemy {
         this.mydirection = Direction.WAIT;
 
 
-        SpriteSheet skeletonSS = new SpriteSheet("res/indianBow.png", 64, 64, 0);
+        SpriteSheet skeletonSS = new SpriteSheet("res/joshcoesprite.png", 64, 64, 0);
 
         skup = new Animation();
 
@@ -117,23 +117,23 @@ public class Enemy {
 
         shootUp.setAutoUpdate(true);
 
-        shootUp.addFrame(skeletonSS.getSprite(0, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(0, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(1, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(1, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(2, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(2, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(3, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(3, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(4, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(4, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(5, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(5, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(6, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(6, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(7, 16), 330);
+        shootUp.addFrame(skeletonSS.getSprite(7, 4), 330);
 
-        shootUp.addFrame(skeletonSS.getSprite(8, 16), 330);
+       // shootUp.addFrame(skeletonSS.getSprite(8, 5), 330);
 
         skdown = new Animation();
 
@@ -155,29 +155,29 @@ public class Enemy {
 
         skdown.addFrame(skeletonSS.getSprite(7, 10), 330);
 
-        skdown.addFrame(skeletonSS.getSprite(8, 10), 330);
+      //  skdown.addFrame(skeletonSS.getSprite(8, 10), 330);
 
 shootDown = new Animation();
 
         shootDown.setAutoUpdate(true);
 
-        shootDown.addFrame(skeletonSS.getSprite(0, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(0, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(1, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(1, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(2, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(2, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(3, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(3, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(4, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(4, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(5, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(5, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(6, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(6, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(7, 18), 200);
+        shootDown.addFrame(skeletonSS.getSprite(7, 6), 200);
 
-        shootDown.addFrame(skeletonSS.getSprite(8, 18), 200);
+       //shootDown.addFrame(skeletonSS.getSprite(8, 7), 200);
         
         
         skleft = new Animation();
@@ -200,29 +200,29 @@ shootDown = new Animation();
 
         skleft.addFrame(skeletonSS.getSprite(7, 9), 330);
 
-        skleft.addFrame(skeletonSS.getSprite(8, 9), 330);
+     //   skleft.addFrame(skeletonSS.getSprite(8, 9), 330);
 
 shootLeft = new Animation();
 
         shootLeft.setAutoUpdate(true);
 
-        shootLeft.addFrame(skeletonSS.getSprite(0, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(0, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(1, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(1, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(2, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(2, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(3, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(3, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(4, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(4, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(5, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(5, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(6, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(6, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(7, 17), 330);
+        shootLeft.addFrame(skeletonSS.getSprite(7, 5), 330);
 
-        shootLeft.addFrame(skeletonSS.getSprite(8, 17), 330);
+       // shootLeft.addFrame(skeletonSS.getSprite(8, 6), 330);
         
         
         skright = new Animation();
@@ -252,23 +252,23 @@ shootLeft = new Animation();
 
         shootRight.setAutoUpdate(true);
 
-        shootRight.addFrame(skeletonSS.getSprite(0, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(0, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(1, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(1, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(2, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(2, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(3, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(3, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(4, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(4, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(5, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(5, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(6, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(6, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(7, 19), 330);
+        shootRight.addFrame(skeletonSS.getSprite(7, 7), 330);
 
-        shootRight.addFrame(skeletonSS.getSprite(8, 19), 330);
+        //shootRight.addFrame(skeletonSS.getSprite(8, 8), 330);
         
         
         
@@ -611,14 +611,14 @@ shootLeft = new Animation();
 
     public float getskhitboxX() {
 
-        return this.Bx +1;
+        return this.Bx +16;
 
     }
 
 
     public float getskhitboxY() {
 
-        return this.By +1;
+        return this.By + 16;
 
     }
 

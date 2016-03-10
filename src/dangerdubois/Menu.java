@@ -15,6 +15,7 @@ import org.newdawn.slick.Graphics;
 
 
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 
 
 import org.newdawn.slick.SlickException;
@@ -43,7 +44,7 @@ public class Menu extends BasicGameState {
 
     public Image startimage;
     
-
+public Music backgroundMusic;
 
      public Menu(int xSize, int ySize) {
 
@@ -62,10 +63,11 @@ public class Menu extends BasicGameState {
             throws SlickException {
     	
     	startimage = new Image("res/Lorelei.png");
-
-
+        backgroundMusic = new Music("res/sandstorm.ogg");
+        
+backgroundMusic.play();
         this.game = game;
-
+        
 
 
 // TODO AutoÃ¢â‚¬Âgenerated method stub
@@ -92,7 +94,7 @@ public class Menu extends BasicGameState {
         g.setColor(Color.white);
         
         startimage.draw();
-
+   
         //g.drawString("stuff", 300, 200);
         
         //g.drawString("collect the antidote before time runs out! red potions are health and yellow potions make you run faster", 50, 300);

@@ -27,7 +27,7 @@ public class Main extends StateBasedGame{
 
       this.addState(new Menu(xSize, ySize));
 
-      this.addState(new GoldAndGlory(xSize, ySize));
+      this.addState(new DangerDuBois(xSize, ySize));
       
       this.addState(new lose(xSize, ySize));
       

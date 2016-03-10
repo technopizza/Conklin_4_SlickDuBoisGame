@@ -15,6 +15,7 @@ import org.newdawn.slick.Graphics;
 
 
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 
 
 import org.newdawn.slick.SlickException;
@@ -41,9 +42,9 @@ public class lose extends BasicGameState {
 
     private StateBasedGame game;
     public Image startimage;
-
+Music death;
     
-
+boolean play;
 
      public lose(int xSize, int ySize) {
 
@@ -60,9 +61,9 @@ public class lose extends BasicGameState {
 
 
             throws SlickException {
-    	startimage = new Image("res/LossScreen.png");
-
-
+    	startimage = new Image("res/grave.jpg");
+        death = new Music("res/death.wav");
+         play = false;
         this.game = game;
 
 
@@ -83,6 +84,12 @@ public class lose extends BasicGameState {
             throws SlickException {
     	
     	startimage.draw();
+        
+        if(!play){
+            death.play();
+            play =true;
+        }
+        
 
 
 

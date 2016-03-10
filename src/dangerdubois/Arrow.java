@@ -21,12 +21,13 @@ public class Arrow {
 	public boolean isvisible = true;
 	Image currentImage;
 	Shape hitbox;
-	Image arrowImageUp = new Image("res/arrowUp.png");
-        Image arrowImageDown = new Image("res/arrowDown.png");
-        Image arrowImageLeft = new Image("res/arrowLeft.png");
-        Image arrowImageRight = new Image("res/arrowRight.png");
+	Image arrowImageUp = new Image("res/bullet.png");
+        Image arrowImageDown = new Image("res/bullet.png");
+        Image arrowImageLeft = new Image("res/bullet.png");
+        Image arrowImageRight = new Image("res/bullet.png");
         String direction;
         static int speed = 8;
+        int distance;
         private int startX, startY, width = 32, height = 32;
 
     float hitboxX = x+32f;
@@ -41,6 +42,7 @@ public class Arrow {
 		this.x = a;
 		this.y = b;
                 this.direction=dir;
+                this.distance = 0;
 		this.hitbox = new Rectangle(a, b, width, height);// 64 is the width of the item
 		//.currentImage = arrowImage;
                 
@@ -60,13 +62,13 @@ public class Arrow {
 
 	public  float gethitboxX() {
 
-		return x + 22;
+		return x + 16;
 
 	}
 
 	public  float gethitboxY() {
 
-		return y;
+		return y + 16;
 	}
 
 	public  void sethitboxX() {
@@ -80,7 +82,7 @@ public class Arrow {
 		hitboxY = gethitboxY();
 
 	}
-        public void getImage(){
+        public void getImage() throws SlickException{
            
             if(direction == "up"){
                 currentImage = arrowImageUp;
@@ -94,7 +96,7 @@ public class Arrow {
             else if(direction == "left"){
                 currentImage = arrowImageLeft;
             }
-          
+            currentImage = new Image("res/bullet.png");
         }
         
 }

@@ -91,10 +91,10 @@ static Random random = new Random();
         this.timemoved = timemoved;
     }
     static void getAllImages() throws SlickException{
-        orbImagesList.add(new Image("res/obama.png"));
-        orbImagesList.add(new Image("res/obama1.png"));
-        orbImagesList.add(new Image("res/obama2.png"));
-        orbImagesList.add(new Image("res/obama3.png"));
+        orbImagesList.add(new Image("res/karambit.png"));
+//        orbImagesList.add(new Image("res/obama1.png"));
+//        orbImagesList.add(new Image("res/obama2.png"));
+//        orbImagesList.add(new Image("res/obama3.png"));
     }
 
     public float getRotation() {

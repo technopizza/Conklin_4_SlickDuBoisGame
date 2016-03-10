@@ -20,12 +20,12 @@ public class Treasure {
 	public boolean isvisible = true;
 	Image currentImage;
 	Shape hitbox;
-	Image treasureImage = new Image("res/treasureSprite.png");
+	Image treasureImage = new Image("res/burger.png");
 
 	Treasure(int a, int b) throws SlickException {
 		this.x = a;
 		this.y = b;
-		this.hitbox = new Rectangle(a, b, treasureImage.getWidth(), treasureImage.getHeight());// 64 is the width of the item
+		this.hitbox = new Rectangle(a, b, treasureImage.getWidth() / 2, treasureImage.getHeight() / 2);// 64 is the width of the item
 		this.currentImage = treasureImage;
 }
 }

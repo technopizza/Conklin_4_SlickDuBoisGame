@@ -18,7 +18,7 @@ import org.newdawn.slick.geom.Shape;
 
 public class Player {
     
-    private int positionX, positionY, hitBoxPositionX, hitBoxPositionY, speed, health;
+    private int positionX, positionY, hitBoxPositionX, hitBoxPositionY, speed, health, score;
     private Animation moveNorth, moveSouth, moveWest, moveEast, standNorth, standSouth, standWest, standEast, thrustNorth, thrustSouth, thrustWest, thrustEast;
     private Shape hitBox;
     private SpriteSheet playerSpriteSheet;
@@ -34,6 +34,7 @@ public class Player {
            //spriteInit(path);
            speed = spd;
            health = hth;
+           score = 0;
            
        }
         
@@ -141,20 +142,20 @@ public class Player {
 
         thrustEast.setAutoUpdate(false);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(0, 7), 150);
-        thrustEast.addFrame(playerSpriteSheet.getSprite(1, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(0, 15), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(1, 15), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(2, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(2, 15), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(3, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(3, 15), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(4, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(4, 15), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(5, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(5, 15), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(6, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(6, 15), 150);
 
-        thrustEast.addFrame(playerSpriteSheet.getSprite(7, 7), 150);
+        thrustEast.addFrame(playerSpriteSheet.getSprite(7, 15), 150);
 
         thrustWest = new Animation();
 
@@ -383,6 +384,14 @@ public class Player {
 
     public void setPdelta(float pdelta) {
         this.pdelta = pdelta;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
         
         

@@ -20,10 +20,13 @@ import org.newdawn.slick.geom.Shape;
  */
 public class Mine {
     
+    static int[][] mineCoords;
+    static int numberOfMines = 10;
+    
     private static int hitBoxWidth = 32;
     private static int hitBoxHeight = 32;
-    Image mineImage = new Image("res/arrow.png");
-    static int damage = 10000;
+    Image mineImage = new Image("res/mine.png");
+    static int damage = 50;
     static SpriteSheet explosionSpriteSheet;
     static Animation baseExplosionAnimation;
     
