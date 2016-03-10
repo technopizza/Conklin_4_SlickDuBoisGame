@@ -11,7 +11,7 @@ public class Main extends StateBasedGame{
 
    
 
-   public static final String gamename = "Gold and Glory";
+   public static final String gamename = "Danger DuBois: DuBoiscalypse";
 
    public static final int play = 0;
 

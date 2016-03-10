@@ -707,7 +707,7 @@ duBois.setHitBoxPositionY(duBois.getPositionY());
             sbg.enterState(2, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
         }
         if (duBois.getScore()
-                >= 400) {
+                >= 100) {
             makevisible();
             duBois.setScore(0);
             sbg.enterState(3, new FadeOutTransition(Color.black), new FadeInTransition(Color.black));

@@ -16,9 +16,11 @@ import org.newdawn.slick.GameContainer;
 
 
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 
 
 import org.newdawn.slick.SlickException;
@@ -40,7 +42,9 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 public class win extends BasicGameState {
 
 
-    
+    boolean play;
+    Music win;
+    Image winimage;
 
 
     private StateBasedGame game;
@@ -65,6 +69,9 @@ public class win extends BasicGameState {
 
             throws SlickException {
 
+        winimage = new Image("res/winscreen.png");
+        win = new Music("res/stayinalive.ogg");
+         play = false;
 
         this.game = game;
 
@@ -91,9 +98,16 @@ public class win extends BasicGameState {
 
         g.setColor(Color.white);
 
-
-        g.drawString("You found the antidote in time!", 380, 200);
-        g.drawString("press 1 to play again", 400, 320);
+winimage.draw();
+        
+        if(!play){
+            win.play();
+            play =true;
+        }
+        
+        
+//        g.drawString("You found the antidote in time!", 380, 200);
+//        g.drawString("press 1 to play again", 400, 320);
 
 
        
